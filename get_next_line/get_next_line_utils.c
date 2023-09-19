@@ -6,13 +6,13 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 21:28:50 by adrigarc          #+#    #+#             */
-/*   Updated: 2023/09/19 23:28:31 by adrian           ###   ########.fr       */
+/*   Updated: 2023/09/20 01:23:18 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_substr(char *mBox, unsigned int start, size_t len_max)
+char	*ft_substr(char *mBox, unsigned int start, size_t max_len)
 {
 	char	*aux;
 	size_t	count;
@@ -22,16 +22,16 @@ char	*ft_substr(char *mBox, unsigned int start, size_t len_max)
 	if (!mBox)
 		return (0);
 	len_str = ft_strlen(mBox);
-	if (len_max >= len_str - start && start < len_str)
-		len_max = len_str - start;
+	if (max_len >= len_str - start && start < len_str)
+		max_len = len_str - start;
 	else if (start >= len_str)
-		len_max = 0;
-	else if (len_max > len_str)
-		len_max = len_str;
-	aux = malloc(sizeof(char) * (len_max + 1));
+		max_len = 0;
+	else if (max_len > len_str)
+		max_len = len_str;
+	aux = malloc(sizeof(char) * (max_len + 1));
 	if (!aux)
 		return (0);
-	while (count < len_max)
+	while (count < max_len)
 		aux[count++] = mBox[start++];
 	aux[count] = '\0';
 	return (aux);
@@ -42,7 +42,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	char	*aux;
 	int		count;
 	int		aux_count;
-	
+
 	count = -1;
 	aux_count = 0;
 	if (!str1)
@@ -55,7 +55,7 @@ char	*ft_strjoin(char *str1, char *str2)
 	aux = malloc(sizeof(char) * (ft_strlen(str1) + ft_strlen(str2) + 1));
 	if (!aux)
 		return (ft_free(&str1));
-	while(str1[++count])
+	while (str1[++count])
 		aux[count] = str1[count];
 	while (str2[aux_count])
 		aux[count++] = str2[aux_count++];
@@ -66,8 +66,8 @@ char	*ft_strjoin(char *str1, char *str2)
 
 char	*ft_strchr(char *str, int c)
 {
-	int		count,
-	
+	int		count;
+
 	count = 0;
 	if (!str)
 		return (0);
@@ -82,7 +82,7 @@ char	*ft_strchr(char *str, int c)
 	return (0);
 }
 
-size_t ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
 	size_t	count;
 
@@ -102,10 +102,7 @@ char	*ft_strdup(char *str)
 
 	count = 0;
 	if (!str)
-	{
-		free(str);
-		return (NULL);
-	}
+		return (0);
 	len = ft_strlen(str);
 	aux = (char *)malloc(sizeof(char) * (len + 1));
 	if (!aux)

@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 21:29:33 by adrigarc          #+#    #+#             */
-/*   Updated: 2023/09/19 23:26:27 by adrian           ###   ########.fr       */
+/*   Updated: 2023/09/20 01:08:54 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ char	*ft_2free(char **str1, char **str2)
 	*str2 = NULL;
 	return (NULL);
 }
+
 char	*ft_read(int fd, char *mBox)
 {
 	int			bytes;
@@ -44,7 +45,7 @@ char	*ft_read(int fd, char *mBox)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes < 0)
-			return (ft_free_double(&mBox, &buffer));
+			return (ft_2free(&mBox, &buffer));
 		if (bytes > 0)
 		{
 			buffer[bytes] = '\0';
@@ -99,7 +100,7 @@ char	*get_next_line(int fd)
 		i++;
 	line = ft_substr(box, 0, i + 1);
 	if (!line || !line[0])
-		return (ft_free_double(&box, &line));
+		return (ft_2free(&box, &line));
 	box = ft_cut(box);
 	return (line);
 }
