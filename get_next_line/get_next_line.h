@@ -6,7 +6,7 @@
 /*   By: adrian <adrian@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 21:11:11 by adrigarc          #+#    #+#             */
-/*   Updated: 2023/09/20 01:16:56 by adrian           ###   ########.fr       */
+/*   Updated: 2023/09/20 02:27:16 by adrian           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 
 char	*get_next_line(int fd);
 char	*ft_read(int fd, char *mBox);
+char	*get_next_line(int fd);
 char	*ft_free(char **str);
 char	*ft_2free(char **str1, char **str2);
-char	*ft_cut(char *mBox);
 
-// utils //
+// UTILS //
 char	*ft_strchr(char *str, int c);
 size_t	ft_strlen(char *str);
 char	*ft_strjoin(char *str1, char *str2);
